@@ -109,158 +109,169 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, var(--hero-a), var(--hero-b));
-      color: #fff;
-      padding: 64px 0;
-      overflow: hidden;
-    }
+  position: relative;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+  background: #04163b;
+}
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
-    }
+.hero-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
 
-    .hero-tag {
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-weight: 700;
-      font-size: 12px;
-      opacity: 0.9;
-    }
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
 
-    .hero h2 {
-      font-size: clamp(34px, 6vw, 58px);
-      line-height: 1.04;
-      margin: 12px 0 14px;
-    }
+.hero-slide.active {
+  opacity: 1;
+}
 
-    .hero p {
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 620px;
-      opacity: 0.95;
-    }
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(2, 17, 53, 0.82) 0%, rgba(2, 17, 53, 0.72) 35%, rgba(2, 17, 53, 0.42) 60%, rgba(2, 17, 53, 0.2) 100%);
+}
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 22px;
-      border-radius: 18px;
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
+.hero-content-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
 
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: #fff; color: var(--primary-dark); }
-    .btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.22); }
-    .btn-green { background: var(--primary); color: #fff; }
-    .btn-green:hover { background: var(--primary-dark); }
-    .btn-outline { border: 1px solid var(--border); background: transparent; }
+.hero-content {
+  max-width: 680px;
+  padding: 100px 0 88px;
+}
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 28px;
-    }
+.hero-tag {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  font-size: 12px;
+  opacity: 0.95;
+  margin-bottom: 14px;
+}
 
-    .stat {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
-      padding: 16px;
-    }
+.hero h2 {
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.02;
+  margin: 0 0 18px;
+}
 
-    .stat strong {
-      font-size: 28px;
-      display: block;
-      margin-bottom: 4px;
-    }
+.hero p {
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 620px;
+  opacity: 0.96;
+}
 
-    .hero-image {
-      position: relative;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.14);
-      padding: 14px;
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 18px;
+  font-weight: 700;
+  transition: 0.2s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-    .hero-slider {
-      position: relative;
-      width: 100%;
-      height: 430px;
-      border-radius: 22px;
-      overflow: hidden;
-    }
+.btn:hover {
+  transform: translateY(-1px);
+}
 
-    .hero-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease;
-      transform: translateX(40px) scale(1.02);
-    }
+.btn-primary {
+  background: #fff;
+  color: var(--primary-dark);
+}
 
-    .hero-slide.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(0) scale(1);
-    }
+.btn-secondary {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.22);
+}
 
-    .hero-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 22px;
-      animation: floatImage 5.5s ease-in-out infinite;
-      transition: transform 0.45s ease, filter 0.35s ease;
-      will-change: transform;
-    }
+.btn-green {
+  background: var(--primary);
+  color: #fff;
+}
 
-    .hero-image:hover .hero-slide.active img {
-      transform: scale(1.04);
-      filter: brightness(1.04);
-    }
+.btn-green:hover {
+  background: var(--primary-dark);
+}
 
-    .hero-dots {
-      position: absolute;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 5;
-    }
+.btn-outline {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
 
-    .hero-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      border: none;
-      background: rgba(255,255,255,0.45);
-      cursor: pointer;
-      padding: 0;
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 30px;
+  max-width: 720px;
+}
 
-    .hero-dot.active {
-      background: #fff;
-      transform: scale(1.18);
-    }
+.stat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 18px;
+  padding: 16px;
+  backdrop-filter: blur(3px);
+}
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 4;
+}
+
+.hero-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.hero-dot.active {
+  background: #fff;
+  transform: scale(1.12);
+}
 
     .section {
       padding: 56px 0;
@@ -633,7 +644,7 @@
 
     @media (max-width: 1100px) {
       .products-grid { grid-template-columns: repeat(2, 1fr); }
-      .split, .hero-grid { grid-template-columns: 1fr; }
+      .split, 
       .cart-box { position: static; }
     }
 
@@ -641,8 +652,11 @@
       .topbar-inner { align-items: flex-start; flex-direction: column; }
       .hero { padding: 44px 0; }
       .hero-stats, .value-list, .products-grid { grid-template-columns: 1fr; }
+      
+      
+      .hero h2 { font-size: clamp(34px, 11vw, 52px); }
       .section-head h3, .value-box h3, .cart-head h4 { font-size: 26px; }
-      .hero-slider { height: 280px; }
+      
       .card-image img { height: 220px; }
       .btn { width: 100%; }
       .hero-actions { flex-direction: column; }
@@ -664,47 +678,46 @@
   </header>
 
   <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="hero-tag">Modern Retail Experience</div>
-        <h2>A website mockup built to help Trolleys win online shoppers.</h2>
-        <p>
-          Trolley is a world-class grocery store headquartered in Lagos, Nigeria. 
-      
-        </p>
-        <p>We are the bridge to basic household needs, and we maintain a conducive shopping atmosphere as we pay attention to customer expressions</p>
-        <div class="hero-actions">
-          <a href="#shop" class="btn btn-primary">View Products</a>
-          <a id="heroWhatsapp" href="#" class="btn btn-secondary">Contact on WhatsApp</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><strong>500+</strong><span>Products Ready</span></div>
-          <div class="stat"><strong>24/7</strong><span>Online Visibility</span></div>
-          <div class="stat"><strong>Fast</strong><span>WhatsApp Ordering</span></div>
-        </div>
-      </div>
-      <div class="hero-image reveal-image">
   <div class="hero-slider" id="heroSlider">
     <div class="hero-slide active">
-      <img src="images/t1.png" alt="Trolleys Supermarket banner 1" />
+      <img src="images/t1.png" alt="Trolleys Supermarket banner 1">
     </div>
     <div class="hero-slide">
-      <img src="images/t2.png" alt="Trolleys Supermarket banner 2" />
+      <img src="images/t2.png" alt="Trolleys Supermarket banner 2">
     </div>
     <div class="hero-slide">
-      <img src="images/t3.png" alt="Trolleys Supermarket banner 3" />
+      <img src="images/t3.png" alt="Trolleys Supermarket banner 3">
     </div>
-    <div class="hero-slide">
-      <img src="images/t4.png" alt="Trolleys Supermarket banner 3" />
-    </div>
-    <div class="hero-slide">
-      <img src="images/t5.png" alt="Trolleys Supermarket banner 3" />
-    </div>
-    <div class="hero-dots" id="heroDots"></div>
   </div>
-</div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content-wrap">
+    <div class="hero-content">
+     <h2>Who We Are</h2>
+      <p>
+        Welcome to Trolleys, we pride ourselves on our nationwide presence and our unwavering 
+        commitment to customer satisfaction. With our stores located throughout the country, 
+        we are dedicated to providing a personalized shopping experience for all our customers
+      </p>
+      <p>Our team of dedicated professionals is always ready to assist you with your shopping needs, 
+        from our knowledgeable staff in-store to our customer service representatives online. 
+        Whether you are looking for fresh produce, quality products, or simply need assistance with a purchase, 
+        we are here to help.</p> 
+      <div class="hero-actions">
+        <a href="#shop" class="btn btn-primary">View Products</a>
+        <a id="heroWhatsapp" href="#" class="btn btn-secondary">Contact on WhatsApp</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>500+</strong><span>Products Ready</span></div>
+        <div class="stat"><strong>24/7</strong><span>Online Visibility</span></div>
+        <div class="stat"><strong>Fast</strong><span>WhatsApp Ordering</span></div>
+      </div>
     </div>
-  </section>
+  </div>
+
+  <div class="hero-dots" id="heroDots"></div>
+</section>
 
   <section class="section" id="shop">
     <div class="container">
@@ -909,27 +922,56 @@
     }
 
     function initHeroSlider() {
-      if (!heroSlides.length || !heroDots) return;
+      const slider = document.getElementById('heroSlider');
+      const dotsWrap = document.getElementById('heroDots');
+      if (!slider || !dotsWrap) return;
 
-      heroDots.innerHTML = '';
-      heroSlides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.className = `hero-dot ${index === 0 ? 'active' : ''}`;
-        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+      const slides = Array.from(slider.querySelectorAll('.hero-slide'));
+      if (!slides.length) return;
+
+      let currentSlide = 0;
+      let autoSlide = null;
+
+      dotsWrap.innerHTML = slides.map((_, index) =>
+        `<button class="hero-dot ${index === 0 ? 'active' : ''}" data-slide="${index}" aria-label="Go to slide ${index + 1}"></button>`
+      ).join('');
+
+      const dots = Array.from(dotsWrap.querySelectorAll('.hero-dot'));
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % slides.length);
+      }
+
+      function startAutoSlide() {
+        stopAutoSlide();
+        autoSlide = setInterval(nextSlide, 4500);
+      }
+
+      function stopAutoSlide() {
+        if (autoSlide) {
+          clearInterval(autoSlide);
+          autoSlide = null;
+        }
+      }
+
+      dots.forEach(dot => {
         dot.addEventListener('click', () => {
-          setActiveHeroSlide(index);
-          startHeroSlider();
+          showSlide(Number(dot.dataset.slide));
+          startAutoSlide();
         });
-        heroDots.appendChild(dot);
       });
 
-      setActiveHeroSlide(0);
-      startHeroSlider();
+      slider.addEventListener('mouseenter', stopAutoSlide);
+      slider.addEventListener('mouseleave', startAutoSlide);
 
-      if (heroSliderWrap) {
-        heroSliderWrap.addEventListener('mouseenter', stopHeroSlider);
-        heroSliderWrap.addEventListener('mouseleave', startHeroSlider);
-      }
+      showSlide(0);
+      startAutoSlide();
     }
 
     function renderCategories() {
@@ -940,56 +982,58 @@
         button.textContent = category;
         button.onclick = () => {
           selectedCategory = category;
-      
-function initHeroSlider() {
-  const slider = document.getElementById('heroSlider');
-  const dotsWrap = document.getElementById('heroDots');
-  if (!slider || !dotsWrap) return;
-
-  const slides = Array.from(slider.querySelectorAll('.hero-slide'));
-  if (!slides.length) return;
-
-  let currentSlide = 0;
-  let autoSlide;
-
-  dotsWrap.innerHTML = slides.map((_, index) =>
-    `<button class="hero-dot ${index === 0 ? 'active' : ''}" data-slide="${index}" aria-label="Go to slide ${index + 1}"></button>`
-  ).join('');
-
-  const dots = Array.from(dotsWrap.querySelectorAll('.hero-dot'));
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-    currentSlide = index;
-  }
-
-  function nextSlide() {
-    showSlide((currentSlide + 1) % slides.length);
-  }
-
-  function startAutoSlide() {
-    stopAutoSlide();
-    autoSlide = setInterval(nextSlide, 3500);
-  }
-
-  function stopAutoSlide() {
-    if (autoSlide) clearInterval(autoSlide);
-  }
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      showSlide(Number(dot.dataset.slide));
-      startAutoSlide();
-    });
-  });
-
-  slider.addEventListener('mouseenter', stopAutoSlide);
-  slider.addEventListener('mouseleave', startAutoSlide);
-
-  showSlide(0);
-  startAutoSlide();
-}
+          function initHeroSlider() {
+      const slider = document.getElementById('heroSlider');
+      const dotsWrap = document.getElementById('heroDots');
+      if (!slider || !dotsWrap) return;
+    
+      const slides = Array.from(slider.querySelectorAll('.hero-slide'));
+      if (!slides.length) return;
+    
+      let currentIndex = 0;
+      let intervalId = null;
+    
+      dotsWrap.innerHTML = slides.map((_, index) =>
+        `<button class="hero-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Go to slide ${index + 1}"></button>`
+      ).join('');
+    
+      const dots = Array.from(dotsWrap.querySelectorAll('.hero-dot'));
+    
+      function showSlide(index) {
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentIndex = index;
+      }
+    
+      function nextSlide() {
+        showSlide((currentIndex + 1) % slides.length);
+      }
+    
+      function startSlider() {
+        stopSlider();
+        intervalId = setInterval(nextSlide, 3500);
+      }
+    
+      function stopSlider() {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+    
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          showSlide(Number(dot.dataset.index));
+          startSlider();
+        });
+      });
+    
+      slider.addEventListener('mouseenter', stopSlider);
+      slider.addEventListener('mouseleave', startSlider);
+    
+      showSlide(0);
+      startSlider();
+    }
 
     renderCategories();
           renderProducts();
@@ -1057,8 +1101,7 @@ function initHeroSlider() {
         btn.addEventListener('click', () => addToCart(Number(btn.dataset.add)));
       });
 
-      initHeroSlider();
-    enableImageReveal();
+      enableImageReveal();
     }
 
     function renderCart() {
@@ -1138,56 +1181,58 @@ function initHeroSlider() {
     }
 
     initHeroSlider();
-
 function initHeroSlider() {
-  const slider = document.getElementById('heroSlider');
-  const dotsWrap = document.getElementById('heroDots');
-  if (!slider || !dotsWrap) return;
-
-  const slides = Array.from(slider.querySelectorAll('.hero-slide'));
-  if (!slides.length) return;
-
-  let currentSlide = 0;
-  let autoSlide;
-
-  dotsWrap.innerHTML = slides.map((_, index) =>
-    `<button class="hero-dot ${index === 0 ? 'active' : ''}" data-slide="${index}" aria-label="Go to slide ${index + 1}"></button>`
-  ).join('');
-
-  const dots = Array.from(dotsWrap.querySelectorAll('.hero-dot'));
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-    currentSlide = index;
-  }
-
-  function nextSlide() {
-    showSlide((currentSlide + 1) % slides.length);
-  }
-
-  function startAutoSlide() {
-    stopAutoSlide();
-    autoSlide = setInterval(nextSlide, 3500);
-  }
-
-  function stopAutoSlide() {
-    if (autoSlide) clearInterval(autoSlide);
-  }
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      showSlide(Number(dot.dataset.slide));
-      startAutoSlide();
-    });
-  });
-
-  slider.addEventListener('mouseenter', stopAutoSlide);
-  slider.addEventListener('mouseleave', startAutoSlide);
-
-  showSlide(0);
-  startAutoSlide();
-}
+      const slider = document.getElementById('heroSlider');
+      const dotsWrap = document.getElementById('heroDots');
+      if (!slider || !dotsWrap) return;
+    
+      const slides = Array.from(slider.querySelectorAll('.hero-slide'));
+      if (!slides.length) return;
+    
+      let currentIndex = 0;
+      let intervalId = null;
+    
+      dotsWrap.innerHTML = slides.map((_, index) =>
+        `<button class="hero-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Go to slide ${index + 1}"></button>`
+      ).join('');
+    
+      const dots = Array.from(dotsWrap.querySelectorAll('.hero-dot'));
+    
+      function showSlide(index) {
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentIndex = index;
+      }
+    
+      function nextSlide() {
+        showSlide((currentIndex + 1) % slides.length);
+      }
+    
+      function startSlider() {
+        stopSlider();
+        intervalId = setInterval(nextSlide, 3500);
+      }
+    
+      function stopSlider() {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+    
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          showSlide(Number(dot.dataset.index));
+          startSlider();
+        });
+      });
+    
+      slider.addEventListener('mouseenter', stopSlider);
+      slider.addEventListener('mouseleave', startSlider);
+    
+      showSlide(0);
+      startSlider();
+    }
 
     renderCategories();
     renderProducts();
